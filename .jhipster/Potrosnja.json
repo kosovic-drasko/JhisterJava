@@ -1,0 +1,14 @@
+{
+  "changelogDate": "20230314060638",
+  "fields": [
+    {
+      "fieldName": "predjenoKm",
+      "fieldType": "Integer"
+    }
+  ],
+  "name": "Potrosnja",
+  "pagination": "no",
+  "readOnly": true,
+  "relationships": [],
+  "service": "no"
+}
