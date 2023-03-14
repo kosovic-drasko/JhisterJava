@@ -17,6 +17,7 @@ export class PotrosnjaComponent implements OnInit {
 
   predicate = 'id';
   ascending = true;
+  potrosnja?: number;
 
   constructor(
     protected potrosnjaService: PotrosnjaService,
@@ -32,11 +33,7 @@ export class PotrosnjaComponent implements OnInit {
   }
 
   load(): void {
-    this.loadFromBackendWithRouteInformations().subscribe({
-      next: (res: EntityArrayResponseType) => {
-        this.onResponseSuccess(res);
-      },
-    });
+    this.queryBackendPotrosnja();
   }
 
   navigateToWithComponentValues(): void {
@@ -75,6 +72,16 @@ export class PotrosnjaComponent implements OnInit {
       sort: this.getSortQueryParam(predicate, ascending),
     };
     return this.potrosnjaService.query(queryObject).pipe(tap(() => (this.isLoading = false)));
+  }
+
+  protected queryBackendPotrosnja(): any {
+    return this.potrosnjaService.potrosnja().subscribe({
+      next: (res: number | undefined) => {
+        this.potrosnja = res;
+        // this.predjenoKm=res;
+        console.log('To je potrosnja:', this.potrosnja);
+      },
+    });
   }
 
   protected handleNavigation(predicate?: string, ascending?: boolean): void {
