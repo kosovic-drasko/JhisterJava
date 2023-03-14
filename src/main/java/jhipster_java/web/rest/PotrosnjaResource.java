@@ -1,20 +1,15 @@
 package jhipster_java.web.rest;
 
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import jhipster_java.domain.Potrosnja;
 import jhipster_java.repository.PotrosnjaRepository;
-import jhipster_java.web.rest.errors.BadRequestAlertException;
+import jhipster_java.service.PotrosnjaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.ResponseUtil;
 
 /**
@@ -28,9 +23,11 @@ public class PotrosnjaResource {
     private final Logger log = LoggerFactory.getLogger(PotrosnjaResource.class);
 
     private final PotrosnjaRepository potrosnjaRepository;
+    private final PotrosnjaService potrosnjaService;
 
-    public PotrosnjaResource(PotrosnjaRepository potrosnjaRepository) {
+    public PotrosnjaResource(PotrosnjaRepository potrosnjaRepository, PotrosnjaService potrosnjaService) {
         this.potrosnjaRepository = potrosnjaRepository;
+        this.potrosnjaService = potrosnjaService;
     }
 
     /**
@@ -41,7 +38,7 @@ public class PotrosnjaResource {
     @GetMapping("/potrosnjas")
     public List<Potrosnja> getAllPotrosnjas() {
         log.debug("REST request to get all Potrosnjas");
-        return potrosnjaRepository.findAll();
+        return potrosnjaService.predjeno();
     }
 
     /**

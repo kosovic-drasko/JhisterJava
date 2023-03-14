@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 /**
  * Spring Data JPA repository for the Potrosnja entity.
  */
-@SuppressWarnings("unused")
+
 @Repository
 public interface PotrosnjaRepository extends JpaRepository<Potrosnja, Long> {}
