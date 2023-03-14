@@ -36,7 +36,7 @@ public class PotrosnjaResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of potrosnjas in body.
      */
     @GetMapping("/potrosnjas")
-    public List<Potrosnja> getAllPotrosnjas() {
+    public int getAllPotrosnjas() {
         log.debug("REST request to get all Potrosnjas");
         return potrosnjaService.predjeno();
     }
