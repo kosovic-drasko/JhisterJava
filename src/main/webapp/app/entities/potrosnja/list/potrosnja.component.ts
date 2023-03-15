@@ -75,7 +75,7 @@ export class PotrosnjaComponent implements OnInit {
   }
 
   protected queryBackendPotrosnja(): any {
-    return this.potrosnjaService.potrosnja().subscribe({
+    return this.potrosnjaService.potrosnja(50, 6).subscribe({
       next: (res: number | undefined) => {
         this.potrosnja = res;
         // this.predjenoKm=res;

@@ -26,8 +26,8 @@ export class PotrosnjaService {
     const options = createRequestOption(req);
     return this.http.get<IPotrosnja[]>(this.resourceUrl, { params: options, observe: 'response' });
   }
-  potrosnja(): any {
-    return this.http.get(`${this.resourceUrl}`);
+  potrosnja(prosjekGradsaka: number, predjenoKm: number): any {
+    return this.http.get(`${this.resourceUrl}/${prosjekGradsaka}/${predjenoKm}`);
   }
 
   getPotrosnjaIdentifier(potrosnja: Pick<IPotrosnja, 'id'>): number {
