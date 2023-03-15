@@ -35,18 +35,12 @@ public class PotrosnjaResource {
      *
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of potrosnjas in body.
      */
-    @GetMapping("/potrosnjas")
-    public int getAllPotrosnjas() {
+    @GetMapping("/potrosnjas/{prosjekGradsaka}/{presaoKm}")
+    public int getAllPotrosnjas(@PathVariable int prosjekGradsaka, @PathVariable int presaoKm) {
         log.debug("REST request to get all Potrosnjas");
-        return potrosnjaService.predjeno();
+        return potrosnjaService.predjeno(prosjekGradsaka, presaoKm);
     }
 
-    /**
-     * {@code GET  /potrosnjas/:id} : get the "id" potrosnja.
-     *
-     * @param id the id of the potrosnja to retrieve.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the potrosnja, or with status {@code 404 (Not Found)}.
-     */
     @GetMapping("/potrosnjas/{id}")
     public ResponseEntity<Potrosnja> getPotrosnja(@PathVariable Long id) {
         log.debug("REST request to get Potrosnja : {}", id);

@@ -21,6 +21,10 @@ public class Potrosnja implements Serializable {
     @Column(name = "predjeno_km")
     private Integer predjenoKm;
 
+    @Column(name = "prosjek_gradska")
+    private Integer prosjekGradska;
+
+    //prosjekGradsaka
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
@@ -60,6 +64,14 @@ public class Potrosnja implements Serializable {
             return false;
         }
         return id != null && id.equals(((Potrosnja) o).id);
+    }
+
+    public Integer getProsjekGradska() {
+        return prosjekGradska;
+    }
+
+    public void setProsjekGradska(Integer prosjekGradska) {
+        this.prosjekGradska = prosjekGradska;
     }
 
     @Override
