@@ -2,8 +2,6 @@ package jhipster_java.web.rest;
 
 import java.util.List;
 import java.util.Optional;
-import jhipster_java.domain.Potrosnja;
-import jhipster_java.repository.PotrosnjaRepository;
 import jhipster_java.service.PotrosnjaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,11 +20,9 @@ public class PotrosnjaResource {
 
     private final Logger log = LoggerFactory.getLogger(PotrosnjaResource.class);
 
-    private final PotrosnjaRepository potrosnjaRepository;
     private final PotrosnjaService potrosnjaService;
 
-    public PotrosnjaResource(PotrosnjaRepository potrosnjaRepository, PotrosnjaService potrosnjaService) {
-        this.potrosnjaRepository = potrosnjaRepository;
+    public PotrosnjaResource(PotrosnjaService potrosnjaService) {
         this.potrosnjaService = potrosnjaService;
     }
 
@@ -39,12 +35,5 @@ public class PotrosnjaResource {
     public int getAllPotrosnjas(@PathVariable int prosjekGradsaka, @PathVariable int presaoKm) {
         log.debug("REST request to get all Potrosnjas");
         return potrosnjaService.predjeno(prosjekGradsaka, presaoKm);
-    }
-
-    @GetMapping("/potrosnjas/{id}")
-    public ResponseEntity<Potrosnja> getPotrosnja(@PathVariable Long id) {
-        log.debug("REST request to get Potrosnja : {}", id);
-        Optional<Potrosnja> potrosnja = potrosnjaRepository.findById(id);
-        return ResponseUtil.wrapOrNotFound(potrosnja);
     }
 }
